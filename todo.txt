@@ -1,0 +1,65 @@
+sueldo base
+gratificacion del 25% tope $182.083 para todos
+= total imponible
+horas extras se suman al imponibles
+
+asignacion familiar viatico
+movilizacion y colacion agregar form
+
+uno y modelo capital provida
+
+si trabajador con plazo fijo no descontar afc
+
+descontar anticipo
+
+mes de la cotizacion a pagar
+
+
+form -
+asignacion familiar
+viatico
+movilizacion
+colacion
+anticipo
+
+
+agregar al form anterior
+fecha ingreso
+indefinido, plazo fijo
+
+--
+
+??sueldo tributable total imponible menos descuentos
+
+sueldo por dia**
+
+sueldo base / 30 = valor dia
+
+valor dia * dia trabajado 
+
+* 30 = sueldo = base
+
+
+horas extras**
+
+valor dia / 8 = hora ordinaria
+
+hora ordinaria * 1.5 = valor hora extra
+
+valor hora otra * hora extra  =  valor a pagar
+
+
+//
+
+dias faltados descuentan el sueldo base
+
+horas extras van por el sueldo liquido
+
+todo al sueldo liquido menos dias faltados
+
+cambiar proporcional por horas extras
+
+atrasos cambiar por feriados
+
+agregar un campo para dias dias feriados en dinero
+
