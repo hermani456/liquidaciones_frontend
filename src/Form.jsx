@@ -73,7 +73,7 @@ export default function Form() {
       fecha_ingreso: fechaIngreso,
     };
 
-    postData("http://localhost:3000/api/trabajador", data);
+    postData("liquidaciones_backend.railway.internal/api/trabajador", data);
   };
 
   const clearForm = () => {

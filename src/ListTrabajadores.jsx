@@ -13,13 +13,13 @@ const ListTrabajadores = () => {
   }
 
   const getTrabajador = async () => {
-    const res = await fetch("http://localhost:3000/api/trabajador");
+    const res = await fetch("liquidaciones_backend.railway.internal/api/trabajador");
     const data = await res.json();
     setTrabajador(data);
   };
 
   const getNombres = async () => {
-    const res = await fetch("http://localhost:3000/api/trabajador/nombres");
+    const res = await fetch("liquidaciones_backend.railway.internal/api/trabajador/nombres");
     const data = await res.json();
     console.log(data)
   }
