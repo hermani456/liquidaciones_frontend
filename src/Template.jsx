@@ -183,7 +183,8 @@ const Template = ({ trabajador }) => {
             height: "100%",
           }}
         >
-          {getMonthName(today).toUpperCase()} {today.getFullYear()}
+          {/* {getMonthName(today).toUpperCase()} {today.getFullYear()} */}
+          DICIEMBRE 2023
         </Typography>
         <Sheet
           variant="outlined"

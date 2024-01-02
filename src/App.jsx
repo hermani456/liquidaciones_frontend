@@ -40,7 +40,7 @@ function App() {
   return (
     <CssVarsProvider>
       <ModeToggle />
-      <Form />
+      {/* <Form /> */}
       <List/>
     </CssVarsProvider>
   );
