@@ -18,7 +18,7 @@ function List() {
 
   useEffect(() => {
     axios
-      .get("liquidaciones_backend.railway.internal/api/trabajador", { headers })
+      .get("http://liquidaciones_backend.railway.internal/api/trabajador", { headers })
       .then((response) => {
         setOptions(
           response.data?.map((trabajador) => {
@@ -37,7 +37,7 @@ function List() {
   function handleSelect(option) {
     setSelectedOption(option);
     axios
-      .get(`liquidaciones_backend.railway.internal/api/trabajador/${option.value}`, {
+      .get(`http://liquidaciones_backend.railway.internal/api/trabajador/${option.value}`, {
         headers: headers,
       })
       .then((response) => {
