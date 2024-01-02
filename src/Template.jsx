@@ -39,9 +39,9 @@ const Template = ({ trabajador }) => {
 
   const gratificacion =
     sueldoBase * 0.25 >= 182083 ? 182083 : sueldoBase * 0.25 || 0;
-  const imponible = sueldoBase + gratificacion;
+  const imponible = sueldoBase + gratificacion + horasExtras + diasFeriados;
   const totalNoImponible =
-    asignacionFamiliar + viatico + colacion + movilizacion + diasFeriados + horasExtras;
+    asignacionFamiliar + viatico + colacion + movilizacion;
   const totalHaberes = imponible + totalNoImponible;
   const date2 = new Date(trabajador?.[0]?.fecha_ingreso);
   // ("0" + this.getDate()).slice(-2)
@@ -374,7 +374,7 @@ const Template = ({ trabajador }) => {
                 <Typography sx={{ textAlign: "right" }}>
                   Horas Extras:
                 </Typography>
-                <Typography sx={{ textAlign: "right" }}>$0</Typography>
+                <Typography sx={{ textAlign: "right" }}>{formatToClp(horasExtras)}</Typography>
               </Sheet>
               <Sheet
                 sx={{
