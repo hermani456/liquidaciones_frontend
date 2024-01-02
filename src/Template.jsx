@@ -780,9 +780,9 @@ const Template = ({ trabajador }) => {
             </Sheet>
           </Sheet>
         </Sheet>
-        <Typography sx={{ fontSize: "0.7rem", textAlign: "center" }}>
+        {/* <Typography sx={{ fontSize: "0.7rem", textAlign: "center" }}>
           Desarrollado por: Diego Campuzano Rios
-        </Typography>
+        </Typography> */}
       </Sheet>
       <Sheet sx={{ display: "flex", justifyContent: "center", my: "2rem" }}>
         <Button onClick={downloadPDF}>Download</Button>
