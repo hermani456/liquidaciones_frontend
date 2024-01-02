@@ -23,6 +23,7 @@ const Template = ({ trabajador }) => {
   const diasTrabajados = 30 - diasAusentes || 0;
   const horasExtras = trabajador?.[0]?.horasExtras || 0;
   const diasFeriados = trabajador?.[0]?.diasFeriados || 0;
+  const prestamo = trabajador?.[0]?.prestamo || 0;
   // const valorHoraExtra = sueldoBase * 0.0077777;
   // console.log("valor hora extra", valorHoraExtra);
   // const pagarPorHorasExtras = Math.round(horasExtras * valorHoraExtra);
@@ -59,7 +60,7 @@ const Template = ({ trabajador }) => {
       Math.round(imponible * cesantia)
   );
   const sueldoLiquido = imponible + totalNoImponible - totalDescuentos;
-  const liquidoAPagar = sueldoLiquido - anticipo;
+  const liquidoAPagar = sueldoLiquido - anticipo - prestamo;
   const today = new Date();
   const date = `${("0" + today.getDate()).slice(-2)}/${(
     "0" +
@@ -660,7 +661,7 @@ const Template = ({ trabajador }) => {
                 }}
               >
                 <Typography sx={{ textAlign: "right" }}>Prestamos:</Typography>
-                <Typography sx={{ textAlign: "right" }}>-$0</Typography>
+                <Typography sx={{ textAlign: "right" }}>{formatToClp(prestamo)}</Typography>
               </Sheet>
               <Sheet
                 sx={{

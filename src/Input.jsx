@@ -17,6 +17,7 @@ const Append = ({ trabajador }) => {
   const [diasAusentes, setDiasAusentes] = React.useState("");
   const [horasExtras, setHorasExtras] = React.useState("");
   const [diasFeriados, setDiasFeriados] = React.useState("");
+  const [prestamo, setPrestamo] = React.useState("");
 
   const cleanSueldo = (sueldo) => {
     let cleanSueldo = sueldo.replace(/\./g, "");
@@ -32,6 +33,8 @@ const Append = ({ trabajador }) => {
     setViatico("");
     setDiasAusentes("");
     setHorasExtras("");
+    setDiasFeriados("");
+    setPrestamo("");
   }, [trabajador]);
 
   const arrayTrabajar = trabajador?.map((trabajador) => {
@@ -55,6 +58,7 @@ const Append = ({ trabajador }) => {
       diasAusentes: parseInt(diasAusentes),
       horasExtras: parseInt(horasExtras),
       diasFeriados: parseInt(diasFeriados),
+      prestamo: parseInt(prestamo),
     };
   });
 
@@ -163,6 +167,18 @@ const Append = ({ trabajador }) => {
               <NumericFormat
                 value={diasFeriados}
                 onChange={(e) => setDiasFeriados(cleanSueldo(e.target.value))}
+                thousandSeparator="."
+                decimalSeparator=","
+                prefix="$"
+                allowNegative={false}
+                customInput={Input}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Prestamo</FormLabel>
+              <NumericFormat
+                value={prestamo}
+                onChange={(e) => setPrestamo(cleanSueldo(e.target.value))}
                 thousandSeparator="."
                 decimalSeparator=","
                 prefix="$"
