@@ -16,6 +16,7 @@ const Append = ({ trabajador }) => {
   const [anticipo, setAnticipo] = React.useState("");
   const [diasAusentes, setDiasAusentes] = React.useState("");
   const [horasExtras, setHorasExtras] = React.useState("");
+  const [diasFeriados, setDiasFeriados] = React.useState("");
 
   const cleanSueldo = (sueldo) => {
     let cleanSueldo = sueldo.replace(/\./g, "");
@@ -53,6 +54,7 @@ const Append = ({ trabajador }) => {
       anticipo: parseInt(anticipo),
       diasAusentes: parseInt(diasAusentes),
       horasExtras: parseInt(horasExtras),
+      diasFeriados: parseInt(diasFeriados),
     };
   });
 
@@ -146,9 +148,26 @@ const Append = ({ trabajador }) => {
             </FormControl>
             <FormControl>
               <FormLabel>Horas Extras</FormLabel>
-              <Input
+              <NumericFormat
                 value={horasExtras}
-                onChange={(e) => setHorasExtras(e.target.value)}
+                onChange={(e) => setHorasExtras(cleanSueldo(e.target.value))}
+                thousandSeparator="."
+                decimalSeparator=","
+                prefix="$"
+                allowNegative={false}
+                customInput={Input}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Feriados</FormLabel>
+              <NumericFormat
+                value={diasFeriados}
+                onChange={(e) => setDiasFeriados(cleanSueldo(e.target.value))}
+                thousandSeparator="."
+                decimalSeparator=","
+                prefix="$"
+                allowNegative={false}
+                customInput={Input}
               />
             </FormControl>
           </Sheet>

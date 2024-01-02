@@ -22,24 +22,25 @@ const Template = ({ trabajador }) => {
   const diasAusentes = trabajador?.[0]?.diasAusentes || 0;
   const diasTrabajados = 30 - diasAusentes || 0;
   const horasExtras = trabajador?.[0]?.horasExtras || 0;
-  const valorHoraExtra = sueldoBase * 0.0077777;
-  console.log("valor hora extra", valorHoraExtra);
-  const pagarPorHorasExtras = Math.round(horasExtras * valorHoraExtra);
-  console.log("pago horas extras", pagarPorHorasExtras);
-  const valorDia = sueldoBase / 30;
-  console.log("valor dia", valorDia);
-  sueldoBase = Math.round(diasTrabajados * valorDia);
+  const diasFeriados = trabajador?.[0]?.diasFeriados || 0;
+  // const valorHoraExtra = sueldoBase * 0.0077777;
+  // console.log("valor hora extra", valorHoraExtra);
+  // const pagarPorHorasExtras = Math.round(horasExtras * valorHoraExtra);
+  // console.log("pago horas extras", pagarPorHorasExtras);
+  // const valorDia = sueldoBase / 30;
+  // console.log("valor dia", valorDia);
+  // sueldoBase = Math.round(diasTrabajados * valorDia);
   // console.log("pago por dia trabajado", pagoDiaTrabajado);
   //
-  const feriadosTrabajados = 1;
-  const pagoFeriadosTrabajados = Math.round(8 * valorHoraExtra);
-  console.log("pago por feriados trabajados", pagoFeriadosTrabajados);
+  // const feriadosTrabajados = 1;
+  // const pagoFeriadosTrabajados = Math.round(8 * valorHoraExtra);
+  // console.log("pago por feriados trabajados", pagoFeriadosTrabajados);
 
   const gratificacion =
     sueldoBase * 0.25 >= 182083 ? 182083 : sueldoBase * 0.25 || 0;
   const imponible = sueldoBase + gratificacion;
   const totalNoImponible =
-    asignacionFamiliar + viatico + colacion + movilizacion;
+    asignacionFamiliar + viatico + colacion + movilizacion + diasFeriados + horasExtras;
   const totalHaberes = imponible + totalNoImponible;
   const date2 = new Date(trabajador?.[0]?.fecha_ingreso);
   // ("0" + this.getDate()).slice(-2)
@@ -381,7 +382,7 @@ const Template = ({ trabajador }) => {
                 }}
               >
                 <Typography sx={{ textAlign: "right" }}>Feriados: </Typography>
-                <Typography sx={{ textAlign: "right" }}>$0</Typography>
+                <Typography sx={{ textAlign: "right" }}>{formatToClp(diasFeriados)}</Typography>
               </Sheet>
               <Sheet
                 sx={{

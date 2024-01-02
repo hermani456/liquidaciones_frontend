@@ -9,8 +9,8 @@ function List() {
   const [options, setOptions] = useState([]);
   const [trabajador, setTrabajador] = useState([]);
 
-  const username = "admin";
-  const password = "admin";
+  const username = import.meta.env.VITE_USERNAME
+  const password = import.meta.env.VITE_PASSWORD
 
   const headers = {
     Authorization: "Basic " + btoa(username + ":" + password),
