@@ -73,7 +73,7 @@ export default function Form() {
       fecha_ingreso: fechaIngreso,
     };
 
-    postData("https://liquidaciones_backend.railway.internal/api/trabajador", data);
+    postData("https://liquidacionesbackend-production.up.railway.app/api/trabajador", data);
   };
 
   const clearForm = () => {
