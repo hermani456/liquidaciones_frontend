@@ -5,10 +5,14 @@ import FormControl from "@mui/joy/FormControl";
 import React from "react";
 import Template from "./Template";
 import { useEffect } from "react";
-import { formatToClp } from "../utils/index";
+import { getMonthName } from "../utils/index";
 import { NumericFormat } from "react-number-format";
+import Select from "@mui/joy/Select";
+import Option from "@mui/joy/Option";
 
 const Append = ({ trabajador }) => {
+  const today = new Date();
+  const currentMonth = getMonthName(today).toUpperCase();
   const [asignacionFamiliar, setAsignacionFamiliar] = React.useState("");
   const [viatico, setViatico] = React.useState("");
   const [colacion, setColacion] = React.useState("");
@@ -18,6 +22,7 @@ const Append = ({ trabajador }) => {
   const [horasExtras, setHorasExtras] = React.useState("");
   const [diasFeriados, setDiasFeriados] = React.useState("");
   const [prestamo, setPrestamo] = React.useState("");
+  const [mes, setMes] = React.useState(currentMonth);
 
   const cleanSueldo = (sueldo) => {
     let cleanSueldo = sueldo.replace(/\./g, "");
@@ -35,6 +40,7 @@ const Append = ({ trabajador }) => {
     setHorasExtras("");
     setDiasFeriados("");
     setPrestamo("");
+    setMes(currentMonth);
   }, [trabajador]);
 
   const arrayTrabajar = trabajador?.map((trabajador) => {
@@ -59,8 +65,25 @@ const Append = ({ trabajador }) => {
       horasExtras: parseInt(horasExtras),
       diasFeriados: parseInt(diasFeriados),
       prestamo: parseInt(prestamo),
+      mes: mes,
     };
   });
+
+
+  const meses = [
+    "ENERO",
+    "FEBRERO",
+    "MARZO",
+    "ABRIL",
+    "MAYO",
+    "JUNIO",
+    "JULIO",
+    "AGOSTO",
+    "SEPTIEMBRE",
+    "OCTUBRE",
+    "NOVIEMBRE",
+    "DICIEMBRE",
+  ];
 
   return (
     <>
@@ -185,6 +208,17 @@ const Append = ({ trabajador }) => {
                 allowNegative={false}
                 customInput={Input}
               />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Seleccionar Mes</FormLabel>
+              <Select
+                value={mes || currentMonth}
+                onChange={(_, value) => setMes(value)}
+              >
+                {meses.map((mes, i) => (
+                  <Option key={i} value={mes}>{mes}</Option>
+                ))}
+              </Select>
             </FormControl>
           </Sheet>
         </Sheet>

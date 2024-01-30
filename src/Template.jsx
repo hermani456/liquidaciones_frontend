@@ -24,6 +24,7 @@ const Template = ({ trabajador }) => {
   const horasExtras = trabajador?.[0]?.horasExtras || 0;
   const diasFeriados = trabajador?.[0]?.diasFeriados || 0;
   const prestamo = trabajador?.[0]?.prestamo || 0;
+  const mes = trabajador?.[0]?.mes;
   // const valorHoraExtra = sueldoBase * 0.0077777;
   // console.log("valor hora extra", valorHoraExtra);
   // const pagarPorHorasExtras = Math.round(horasExtras * valorHoraExtra);
@@ -185,7 +186,8 @@ const Template = ({ trabajador }) => {
           }}
         >
           {/* {getMonthName(today).toUpperCase()} {today.getFullYear()} */}
-          DICIEMBRE 2023
+          {/* DICIEMBRE 2023 */}
+          {mes} {today.getFullYear()}
         </Typography>
         <Sheet
           variant="outlined"
